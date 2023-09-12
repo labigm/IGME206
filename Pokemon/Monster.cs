@@ -9,12 +9,12 @@ namespace Pokemon
 {
     internal class Monster
     {
-        private string m_sNickname = "";
-        private int m_nLevel = 1;
-        private float m_fHP = 10.0f;
-        private float m_fAttack = 1.0f;
-        private float m_fDefense = 1.0f;
-        private string m_sType = "Normal";
+        protected string m_sNickname = "";
+        protected int m_nLevel = 1;
+        protected float m_fHP = 10.0f;
+        protected float m_fAttack = 1.0f;
+        protected float m_fDefense = 1.0f;
+        protected string m_sType = "Normal";
 
         public Monster(string a_sNickname)
         {
@@ -23,9 +23,8 @@ namespace Pokemon
         public Monster(string a_sNickname, int a_nLevel) 
         {
             Init(a_sNickname, a_nLevel);
-            this.Print();
         }
-        protected void Init(string a_sNickname, int a_nLevel)
+        virtual protected void Init(string a_sNickname, int a_nLevel)
         {
             m_sNickname = a_sNickname;
             m_nLevel = a_nLevel;
@@ -33,6 +32,7 @@ namespace Pokemon
             m_fAttack += m_nLevel;
             m_fDefense += m_nLevel;
             m_sType = "Normal";
+            this.Print();
         }
         
         public int Level
@@ -47,7 +47,7 @@ namespace Pokemon
 
         public void Fight(Monster a_monster)
         {
-            Console.WriteLine(this.Nickname + " gets in a fight with monster " + a_monster.Nickname + "\n");
+            Console.WriteLine("\n" + this.Nickname + " gets in a fight with monster " + a_monster.Nickname);
             this.Fight(a_monster.Attack);
             this.Print();
         }
@@ -63,13 +63,13 @@ namespace Pokemon
 
         public void Print()
         {
+            Console.WriteLine("");
             Console.WriteLine("Monster name: " + Nickname);
             Console.WriteLine("Type: " + Type);
             Console.WriteLine("Level: " + Level);
             Console.WriteLine("HP: " + HP);
             Console.WriteLine("Attack: " + Attack);
             Console.WriteLine("Defense: " + Defense);
-            Console.WriteLine("");
         }
     }
 }
