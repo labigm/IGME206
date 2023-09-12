@@ -23,6 +23,7 @@ namespace Pokemon
         public Monster(string a_sNickname, int a_nLevel) 
         {
             Init(a_sNickname, a_nLevel);
+            this.Print();
         }
         protected void Init(string a_sNickname, int a_nLevel)
         {
@@ -46,7 +47,9 @@ namespace Pokemon
 
         public void Fight(Monster a_monster)
         {
+            Console.WriteLine(this.Nickname + " gets in a fight with monster " + a_monster.Nickname + "\n");
             this.Fight(a_monster.Attack);
+            this.Print();
         }
 
         protected void Fight(float a_fIncomingDamage)
